@@ -50,7 +50,7 @@ spec:
      spec:
       accessModes:
       - ReadWriteMany
-      storageClassName: local-storage
+      storageClassName: azurefile
       persistantVolumeClaim:
         claimName: demo-pvc
       resources:
