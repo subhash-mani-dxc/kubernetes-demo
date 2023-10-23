@@ -44,13 +44,15 @@ spec:
     #    claimName: demo-pvc
   # nodeName: kubeworker1
      
-volumeClaimTemplates:
+ volumeClaimTemplates:
    - metadata:
       name: mssql
      spec:
       accessModes:
       - ReadWriteMany
       storageClassName: local-storage
+      persistantVolumeClaim:
+        claimName: demo-pvc
       resources:
        requests:
         storage: 2Gi
