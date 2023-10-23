@@ -46,8 +46,8 @@ spec:
       accessModes:
       - ReadWriteMany
       storageClassName: azurefile
-      persistantVolumeClaim:
-        claimName: demo-pvc-1
+      #persistantVolumeClaim:
+        #claimName: demo-pvc-1
       resources:
        requests:
         storage: 2Gi
