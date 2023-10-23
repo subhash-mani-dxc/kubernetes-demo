@@ -38,12 +38,7 @@ spec:
      volumeMounts:
      - name: mssql
        mountPath: "/var/opt/mssql"
- # volumes:
-  #  - name: mssql
-   #   persistentVolumeClaim:
-    #    claimName: demo-pvc
-  # nodeName: kubeworker1
-     
+      
  volumeClaimTemplates:
    - metadata:
       name: mssql
