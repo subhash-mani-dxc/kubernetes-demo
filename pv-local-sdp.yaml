@@ -12,7 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: local-storage
   local:
-    path: "/mnt/data"
+    path: "/mnt/data-sdp"
   nodeAffinity:
     required:
       nodeSelectorTerms:
