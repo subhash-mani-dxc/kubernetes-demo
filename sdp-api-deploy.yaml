@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sdp-api
+spec:
+  selector:
+    matchLabels:
+      app: sdp-api
+      tier: backend
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: sdp-api
+        tier: backend
+    spec:
+      containers:
+      - name: sdp-api
+        image: modstudiocrpoc.azurecr.io/jjohnstephen/studio-sdp-api-image:latest
+        ports:
+        - containerPort: 443
