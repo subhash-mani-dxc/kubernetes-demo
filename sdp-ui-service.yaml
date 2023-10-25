@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: sdp-ui-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: sdp-ui
     tier: frontend
