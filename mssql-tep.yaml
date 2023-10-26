@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
- name: mssql # name of the StatefulSet workload, the SQL Server instance name is derived from this. We suggest to keep this name same as the .spec.template.metadata.labels, .spec.selector.matchLabels and .spec.serviceName to avoid confusion.
+ name: mssql-tep # name of the StatefulSet workload, the SQL Server instance name is derived from this. We suggest to keep this name same as the .spec.template.metadata.labels, .spec.selector.matchLabels and .spec.serviceName to avoid confusion.
 spec:
  serviceName: "mssql" # serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set.
  replicas: 1 # only one pod, with one SQL Server instance deployed.
@@ -18,7 +18,7 @@ spec:
    securityContext:
      fsGroup: 10001
    containers:
-   - name: mssql # container name within the pod.
+   - name: mssql-tep # container name within the pod.
      image: mcr.microsoft.com/mssql/server:2019-latest
      ports:
      - containerPort: 1433
@@ -36,18 +36,16 @@ spec:
           name: mssql
           key: MSSQL_SA_PASSWORD
      volumeMounts:
-     - name: mssql
+     - name: mssql-tep
        mountPath: "/var/opt/mssql"
       
  volumeClaimTemplates:
    - metadata:
-      name: mssql
+      name: mssql-tep
      spec:
       accessModes:
-      - ReadWriteMany
-      storageClassName: azurefile
-      #persistantVolumeClaim:
-        #claimName: demo-pvc-1
+      - ReadWriteOnce
+      storageClassName: local-storage
       resources:
        requests:
         storage: 2Gi
