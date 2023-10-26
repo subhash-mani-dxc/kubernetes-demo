@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forntend-tep
+spec:
+  selector:
+    matchLabels:
+      app: tep
+      tier: frontend
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: tep
+        tier: frontend
+    spec:
+      imagePullSecrets:
+      - name: my-registry-key
+      containers:
+      - name: forntend-tep
+        image: modstudiocrpoc.azurecr.io/frontend-tep:v14
+        ports:
+        - containerPort: 8080
+
+
+
+
