@@ -18,7 +18,7 @@ spec:
       - name: my-registry-key
       containers:
       - name: forntend-tep
-        image: modstudiocrpoc.azurecr.io/frontend-tep:v14
+        image: modstudiocrpoc.azurecr.io/frontend-tep:v15
         ports:
         - containerPort: 8080
 
