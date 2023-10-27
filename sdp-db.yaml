@@ -43,9 +43,10 @@ spec:
    - metadata:
       name: mssql-sdp
      spec:
+      secretName: azure-secret
       accessModes:
       - ReadWriteOnce
-      storageClassName: local-storage
+      storageClassName: azure-block
       resources:
        requests:
-        storage: 2Gi
+        storage: 8Gi
