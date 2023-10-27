@@ -4,6 +4,7 @@ metadata:
   name: backend-tep-service
 spec:
   type: ClusterIP
+  ClusterIP: 10.107.62.32
   selector:
     app: tep-backend
     tier: backend
