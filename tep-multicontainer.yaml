@@ -41,9 +41,9 @@ spec:
           value: "1"
         - name: MSSQL_SA_PASSWORD
           valueFrom:
-         secretKeyRef:
-          name: mssql
-          key: MSSQL_SA_PASSWORD
-     volumeMounts:
-     - name: mssql-tep
-       mountPath: "/var/opt/mssql"
+            secretKeyRef:
+             name: mssql
+             key: MSSQL_SA_PASSWORD
+        volumeMounts:
+        - name: mssql-tep
+          mountPath: "/var/opt/mssql"
