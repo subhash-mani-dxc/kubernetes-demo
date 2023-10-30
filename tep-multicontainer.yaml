@@ -12,30 +12,33 @@ spec:
       labels:
         app: tep
     spec:
+      volumes:
+        - name: mssql-tep
+          emptyDir: {}
       containers:
       - name: forntend-tep
         image: modstudiocrpoc.azurecr.io/frontend-tep:v12
         ports:
         - containerPort: 8080
       - name: backend-tep
-        image: modstudiocrpoc.azurecr.io/tepbackend:v5
+        image: modstudiocrpoc.azurecr.io/tepbackend:v9
         command: ["catalina.sh","run"]
         ports:
         - containerPort: 8080
       - name: mssql-tep # container name within the pod.
-     image: mcr.microsoft.com/mssql/server:2019-latest
-     ports:
-     - containerPort: 1433
-       name: tcpsql
-     env:
-     - name: ACCEPT_EULA
-       value: "Y"
-     - name: MSSQL_ENABLE_HADR
-       value: "1"
-     - name: MSSQL_AGENT_ENABLED
-       value: "1"
-     - name: MSSQL_SA_PASSWORD
-       valueFrom:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports:
+        - containerPort: 1433
+          name: tcpsql
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_ENABLE_HADR
+          value: "1"
+        - name: MSSQL_AGENT_ENABLED
+          value: "1"
+        - name: MSSQL_SA_PASSWORD
+          valueFrom:
          secretKeyRef:
           name: mssql
           key: MSSQL_SA_PASSWORD
@@ -43,16 +46,7 @@ spec:
      - name: mssql-tep
        mountPath: "/var/opt/mssql"
 
- volumeClaimTemplates:
-   - metadata:
-      name: mssql-tep
-     spec:
-      accessModes:
-      - ReadWriteOnce
-      storageClassName: local-storage
-      resources:
-       requests:
-        storage: 2Gi 
+ 
 
 
 
