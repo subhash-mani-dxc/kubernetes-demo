@@ -47,9 +47,3 @@ spec:
      volumeMounts:
      - name: mssql-tep
        mountPath: "/var/opt/mssql"
-
- 
-
-
-
-
