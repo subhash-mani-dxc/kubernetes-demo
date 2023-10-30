@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: ubuntu
-  labels:
-    app: ubuntu
+  namespace: development
 spec:
   containers:
-  - image: ubuntu
-    imagePullPolicy: IfNotPresent
-    name: ubuntu
-  restartPolicy: Always
+    - name: ubuntu
+      image: ubuntu
+      command:
+        - sleep
+        - infinity
