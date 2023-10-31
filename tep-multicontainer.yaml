@@ -26,7 +26,7 @@ spec:
         image: modstudiocrpoc.azurecr.io/tepbackend:v10
         command: ["catalina.sh","run"]
         args:
-        -sleep 5000
+        - sleep: 5000
         ports:
         - containerPort: 8081
       - name: mssql-tep # container name within the pod.
