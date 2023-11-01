@@ -1,32 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tep-multicontainer
+  name: tep
 spec:
   selector:
     matchLabels:
-      app: tep-multicontainer
+      app: tep
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: tep-multicontainer
+        app: tep
     spec:
       volumes:
         - name: mssql-tep
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: multicontainer-tep-pvc
       imagePullSecrets:
       - name: my-registry-key
       containers:
       - name: forntend-tep
-        image: modstudiocrpoc.azurecr.io/frontend-tep:v17
+        image: modstudiocrpoc.azurecr.io/frontend-tep:v16
         ports:
         - containerPort: 8080
       - name: backend-tep
         image: modstudiocrpoc.azurecr.io/tepbackend:v10
         command: ["catalina.sh","run"]
-        args:
-        -sleep: 5000
         ports:
         - containerPort: 8081
       - name: mssql-tep # container name within the pod.
@@ -43,9 +42,15 @@ spec:
           value: "1"
         - name: MSSQL_SA_PASSWORD
           valueFrom:
-            secretKeyRef:
-             name: mssql
-             key: MSSQL_SA_PASSWORD
-        volumeMounts:
-        - name: mssql-tep
-          mountPath: "/var/opt/mssql"
+         secretKeyRef:
+          name: mssql
+          key: MSSQL_SA_PASSWORD
+     volumeMounts:
+     - name: mssql-tep
+       mountPath: "/var/opt/mssql"
+
+ 
+
+
+
+
