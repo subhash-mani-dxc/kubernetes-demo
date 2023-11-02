@@ -19,12 +19,11 @@ spec:
       - name: my-registry-key
       containers:
       - name: forntend-tep
-        image: modstudiocrpoc.azurecr.io/frontend-tep:v16
+        image: modstudiocrpoc.azurecr.io/frontend-tep:v17
         ports:
         - containerPort: 8080
       - name: backend-tep
         image: modstudiocrpoc.azurecr.io/tepbackend:v10
-        command: ["catalina.sh","run"]
         ports:
         - containerPort: 8081
       - name: mssql-tep # container name within the pod.
