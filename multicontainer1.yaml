@@ -13,7 +13,7 @@ spec:
         app: tep
     spec:
       securityContext:
-      fsGroup: 10001
+        fsGroup: 10001
       volumes:
         - name: mssql-tep
           persistentVolumeClaim:
