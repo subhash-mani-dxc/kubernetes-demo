@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: multicontainer-sdp-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce   # ReadWriteOnce, ReadOnlyMany or ReadWriteMany
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 8Gi
