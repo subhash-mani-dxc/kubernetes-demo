@@ -24,9 +24,9 @@ spec:
       - name: my-registry-key
       containers:
       - name: forntend-tep
-        image: modstudiocrpoc.azurecr.io/frontend-tep:v20
+        image: modstudiocrpoc.azurecr.io/tep-ui:v9
         ports:
-        - containerPort: 8089
+        - containerPort: 80
       - name: backend-tep
         image: modstudiocrpoc.azurecr.io/tepbackend:v11
         ports:
