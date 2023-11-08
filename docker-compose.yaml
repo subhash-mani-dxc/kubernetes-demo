@@ -1,0 +1,51 @@
+version: '3'
+services:
+  frontend:
+    # build:
+    #    context: C:\Docker\UI1\tep_ui_docker
+    #    dockerfile: Dockerfile
+    image: tep-ui:v13
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+  backend:
+    image: tepbackenddocker:v13
+    # build:
+    #    context: C:\Docker\Backend\tep_backend_docker
+    #    dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - DB
+  DB:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: PasswordPro-demo
+      MSSQL_PID: "Developer"
+      ACCEPT_EULA: "Y"
+      MSSQL_ENABLE_HADR: "1"
+      MSSQL_AGENT_ENABLED: "1"
+
+# version: '3'
+# services:
+#   Frontend:
+    
+#     build:
+#       context: C:\Docker\UI1\tep_ui_docker
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8089:8080"
+#     depends_on:
+#       - Backend
+#   Backend:
+#     build:
+#       context: C:\Docker\Backend\tep_backend_docker
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080:8080"
+#     environment:
+#       SPRING_PROFILES_ACTIVE: docker
+
