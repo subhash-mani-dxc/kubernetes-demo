@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-ingress.yaml
+#  annotations:
+#    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+#    nginx.ingress.kubernetes.io/use-regex: "true"
+#    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /dxcmodstudiodev/login/en
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-tep-service
+            port:
+              number: 8080
+#      - path: /(/|$)(.*)
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: grafana
+#            port:
+#              number: 80
+#      - path: /(.*)
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: grafana
+#            port:
+#              number: 80
