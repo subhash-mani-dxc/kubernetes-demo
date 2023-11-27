@@ -14,6 +14,8 @@ spec:
         app: sdp-ui
         tier: frontend
     spec:
+      imagePullSecrets:
+      - name: my-registry-key
       containers:
       - name: sdp-ui
         image: modstudiocrpoc.azurecr.io/docker-studio-sdp-ui:v1
