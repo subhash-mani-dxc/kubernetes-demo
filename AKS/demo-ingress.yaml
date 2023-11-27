@@ -18,13 +18,13 @@ spec:
             name: frontend-tep-service
             port:
               number: 8080
-#      - path: /(/|$)(.*)
-#        pathType: Prefix
-#        backend:
-#          service:
-#            name: grafana
-#            port:
-#              number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sdp-ui-service
+            port:
+              number: 80
 #      - path: /(.*)
 #        pathType: Prefix
 #        backend:
