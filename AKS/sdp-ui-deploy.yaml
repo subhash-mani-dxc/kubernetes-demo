@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: sdp-ui
-        image: modstudiocrpoc.azurecr.io/angular-ui-image:latest
+        image: modstudiocrpoc.azurecr.io/docker-studio-sdp-ui:v1
         ports:
         - containerPort: 80
