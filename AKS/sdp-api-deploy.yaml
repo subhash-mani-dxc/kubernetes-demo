@@ -14,10 +14,10 @@ spec:
         app: sdp-api
         tier: backend
     spec:
-#      imagePullSecrets:
-#      - name: my-registry-key
+      imagePullSecrets:
+      - name: my-registry-key
       containers:
       - name: sdp-api
-        image: modstudiocrpoc.azurecr.io/jjohnstephen/studio-sdp-api-image:latest
+        image: modstudiocrpoc.azurecr.io/sdp-api:v1
         ports:
         - containerPort: 8080
