@@ -14,7 +14,7 @@ spec:
         app: sdp-api
         tier: backend
     spec:
-      imagePullSecret:
+      imagePullSecrets:
       - name: my-registry-key
       containers:
       - name: sdp-api
