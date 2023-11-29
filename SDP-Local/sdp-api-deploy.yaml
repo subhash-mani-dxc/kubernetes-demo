@@ -18,7 +18,7 @@ spec:
       - name: my-registry-key
       containers:
       - name: sdp-api
-        image: modstudiocrpoc.azurecr.io/local-sdp-api:v3
+        image: modstudiocrpoc.azurecr.io/local-sdp-api:v7
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         imagePullPolicy: Always
