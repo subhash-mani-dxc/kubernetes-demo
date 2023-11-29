@@ -14,8 +14,11 @@ spec:
         app: sdp-ui
         tier: frontend
     spec:
+      imagePullSecrets:
+      - name: my-registry-key
       containers:
       - name: sdp-ui
         image: modstudiocrpoc.azurecr.io/local-sdp-ui:v4
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
