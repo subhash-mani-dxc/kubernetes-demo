@@ -5,5 +5,5 @@ metadata:
   name: tep-developer-role
 rules:
 - apiGroups: [""] # "" indicates the core API group
-  resources: ["*"]
+  resources: ["pod", "deployment", "services", "secrets", "pvc"]
   verbs: ["get", "watch", "list", "create", "update", "patch"]
