@@ -1,0 +1,67 @@
+version: '2'
+services:
+  explorer:
+    image: 524109048295.dkr.ecr.us-west-2.amazonaws.com/explorer/explorer:nightly
+    restart: always
+    volumes:
+     - explorer_data:/opt/murcs/standalone/data
+     - exploger_logs:/var/log/murcs
+     - neo4j_import:/neo4j
+    depends_on:
+      - explorer_db
+    ports:
+     - "8081:8081"
+    environment:
+     - DS_MURCS_DRIVER=mysql
+     - DS_MURCS_URL=jdbc:mysql://explorer_db:3306/murcs?useLegacyDatetimeCode=false&serverTimezone=UTC
+     - DS_MURCS_USER=murcs
+     - DS_MURCS_PASSWORD=murcs
+     - DS_KEYCLOAK_DRIVER=mysql
+     - KEYCLOAK_HOST=keycloak
+     - KEYCLOAK_PORT=8080
+     - DS_KEYCLOAK_URL=jdbc:mysql://explorer_db:3306/keycloak
+     - DS_KEYCLOAK_USER=keycloak
+     - DS_KEYCLOAK_PASSWORD=keycloak
+     - MURCS_HTTP_PORT=8081 -Djboss.as.management.blocking.timeout=3000
+     - LOGLEVEL=INFO
+     - EXPLORER_HIBERNATE_SEARCH=true
+  explorer_db:
+    image: 524109048295.dkr.ecr.us-west-2.amazonaws.com/explorer/mysql:nightly
+    restart: always
+    volumes:
+     - explorer_db:/var/lib/mysql
+    ports:
+     - "3306:3306"
+    environment:
+     - MYSQL_ROOT_PASSWORD=murcs
+     - MYSQL_DATABASE=murcs
+  keycloak:
+    image: 524109048295.dkr.ecr.us-west-2.amazonaws.com/studio/keycloak:1.0
+    restart: always
+    volumes:
+     - keycloak_data:/opt/keycloak/standalone/data
+     - keycloak_logs:/var/log/keycloak
+    links:
+      - explorer:murcs
+    depends_on:
+      - explorer_db
+    ports:
+     - "8080:8080"
+    environment:
+     - DS_KEYCLOAK_DRIVER=mysql
+     - DS_KEYCLOAK_URL=jdbc:mysql://explorer_db:3306/keycloak?useLegacyDatetimeCode=false&serverTimezone=UTC
+     - DS_KEYCLOAK_USER=keycloak
+     - DS_KEYCLOAK_PASSWORD=keycloak
+     - WP_KEYCLOAK_URL=http://205.239.215.17.xip.io:8080/auth
+     - WP_KEYCLOAK_HTTP_PORT=8080
+     - EXPLORER_HOST=explorer
+     - EXPLORER_PORT=8081
+     - LOGLEVEL=INFO
+
+volumes:
+  explorer_data:
+  exploger_logs:
+  neo4j_import:
+  explorer_db:
+  keycloak_data:
+  keycloak_logs:
