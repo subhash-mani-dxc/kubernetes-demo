@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: kub-explorer-keycloak-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: explorer
     tier: keycloak
