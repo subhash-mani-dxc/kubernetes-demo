@@ -14,8 +14,8 @@ spec:
         app: explorer
         tier: keycloak
     spec:
-      #      imagePullSecrets:
-      #      - name: my-registry-key
+      imagePullSecrets:
+      - name: my-registry-key
       containers:
         - name: keycloak
           image: 524109048295.dkr.ecr.us-west-2.amazonaws.com/studio/keycloak:1.0
