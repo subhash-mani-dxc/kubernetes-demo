@@ -16,7 +16,7 @@ spec:
       - name: my-registry-key
       containers:
         - name: explorer
-          image: 524109048295.dkr.ecr.us-west-2.amazonaws.com/explorer/explorer:nightly
+          image: modstudiocrpoc.azurecr.io/explorer-ui:v1
           ports:
             - containerPort: 8081
           volumeMounts:
