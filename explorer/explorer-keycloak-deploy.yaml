@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kub-explorer-keycloak
+spec:
+  selector:
+    matchLabels:
+      app: explorer
+      tier: keycloak
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: explorer
+        tier: keycloak
+    spec:
+      #      imagePullSecrets:
+      #      - name: my-registry-key
+      containers:
+        - name: keycloak
+          image: 524109048295.dkr.ecr.us-west-2.amazonaws.com/studio/keycloak:1.0
+          ports:
+            - containerPort: 8080
