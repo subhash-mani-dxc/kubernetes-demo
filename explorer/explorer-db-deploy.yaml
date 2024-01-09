@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: explorer-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: explorer-db
+  template:
+    metadata:
+      labels:
+        app: explorer-db
+    spec:
+      imagePullSecrets:
+      - name: my-registry-key
+      containers:
+        - name: explorer-db
+          image: modstudiocrpoc.azurecr.io/explorer-db:v1
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: murcs
+            - name: MYSQL_DATABASE
+              value: murcs
+      volumes:
+        - name: explorer-db-data
+          emptyDir: {}
