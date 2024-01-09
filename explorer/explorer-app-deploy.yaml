@@ -30,7 +30,7 @@ spec:
             - name: DS_MURCS_DRIVER
               value: mysql
             - name: DS_MURCS_URL
-              value: jdbc:mysql://10.99.152.7:3306/murcs?useLegacyDatetimeCode=false&serverTimezone=UTC
+              value: jdbc:mysql://20.219.115.58:30255/murcs?useLegacyDatetimeCode=false&serverTimezone=UTC
             - name: DS_MURCS_USER
               value: murcs
             - name: DS_MURCS_PASSWORD
@@ -38,11 +38,11 @@ spec:
             - name: DS_KEYCLOAK_DRIVER
               value: mysql
             - name: KEYCLOAK_HOST
-              value: 10.96.154.177
+              value: 20.219.115.58
             - name: KEYCLOAK_PORT
-              value: "8080"
+              value: "31323"
             - name: DS_KEYCLOAK_URL
-              value: jdbc:mysql://10.99.152.7:3306/keycloak
+              value: jdbc:mysql://20.219.115.58:30255/keycloak
             - name: DS_KEYCLOAK_USER
               value: keycloak
             - name: DS_KEYCLOAK_PASSWORD
