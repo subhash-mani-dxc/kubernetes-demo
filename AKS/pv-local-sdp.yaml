@@ -6,10 +6,10 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 5Gi
+    storage: 150Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
+  persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
     path: "/mnt/data-sdp"
