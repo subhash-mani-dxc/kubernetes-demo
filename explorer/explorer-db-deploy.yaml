@@ -26,4 +26,6 @@ spec:
               value: murcs
       volumes:
         - name: explorer-db-data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: explorer-db-data-pvc
+#          emptyDir: {}
