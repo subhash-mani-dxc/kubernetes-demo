@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: mssql-tep-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: tep-sql
     tier: database
@@ -11,3 +11,4 @@ spec:
       # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
     - port: 1433
       targetPort: 1433
+      nodePort: 31322
