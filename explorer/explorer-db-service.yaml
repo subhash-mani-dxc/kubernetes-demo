@@ -6,7 +6,7 @@ spec:
   selector:
     app: explorer-db
   ports:
-  - nodePort: 30255
+#  - nodePort: 30255
     - protocol: TCP
       port: 3306
       targetPort: 3306
