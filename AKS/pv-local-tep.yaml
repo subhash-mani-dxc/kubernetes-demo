@@ -12,7 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: "/mnt/tep"
+    path: "/mnt/data-tep"
   nodeAffinity:
     required:
       nodeSelectorTerms:
