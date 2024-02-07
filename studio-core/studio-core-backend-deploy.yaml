@@ -18,7 +18,7 @@ spec:
     #   - name: dsdiwakar-registry-secret
      containers:
       - name: studio-core-backend
-        image: studiocore:v2
+        image: 13.71.121.117/leonardo/studio-core-backend:v1
         ports:
         - containerPort: 8090
 
