@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kub-studio-core-ui-deploy
+  name: core-ui-deploy
 spec:
   selector:
     matchLabels:
-      app: studio-ui
+      app: core-ui
       tier: frontend
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: studio-ui
+        app: core-ui
         tier: frontend
     spec:
 #      imagePullSecrets:
 #      - name: my-registry-key
       containers:
-      - name: studio-ui
-        image: studio-core-ui:v2
+      - name: core-ui
+        image: 13.71.121.117/leonardo/studio-core-ui:v1
         ports:
         - containerPort: 8081
 
